@@ -77,7 +77,8 @@ local context_range = cache.memoize(function(node, query)
 
     --- @cast match table<integer,TSNode>
 
-    for id, node0 in pairs(match) do
+    for id, nodes in pairs(match) do
+      node0 = nodes[#nodes]
       local srow, scol, erow, ecol = node0:range()
 
       local name = query.captures[id] -- name of the capture in the query
